@@ -24,7 +24,7 @@ plugin: romlecat.osc.inventory
 region: eu-west-2
 access_key:
 secret_key:
-use_private_ip: true
+ip_preference: private_only
 keyed_groups:
   - key: ansible_categories
     separator: ''

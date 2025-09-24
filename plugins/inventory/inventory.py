@@ -44,10 +44,11 @@ options:
     type: string
     choices: [vm_id, public_ip, private_ip, tag_Name]
     default: tag_Name
-  use_private_ip:
-    description: Use private IP for ansible_host if public IP is absent.
-    type: bool
-    default: true
+  ip_preference:
+    description: Which IP to use for ansible_host.
+    type: string
+    choices: [prefer_public, public_only, private_only]
+    default: prefer_public
   group_by:
     description: Keys to create Ansible groups from.
     type: list
@@ -102,7 +103,7 @@ class InventoryModule(BaseInventoryPlugin, Constructable):
         region = config.get('region', 'eu-west-2') or os.getenv('OSC_REGION')
         filters = config.get('filters', {})
         hostname_variable = config.get('hostname_variable', 'tag_Name')
-        use_private_ip = config.get('use_private_ip', True)
+        ip_preference = config.get('ip_preference', 'public_or_private')
         group_by = config.get('group_by', ['tags', 'region', 'subregion', 'vm_type', 'state'])
 
         # Get Constructable options from config
@@ -156,10 +157,18 @@ class InventoryModule(BaseInventoryPlugin, Constructable):
             # Add host
             inventory.add_host(hostname)
 
-            # Set ansible_host
-            ansible_host = vm.get('PublicIp')
-            if not ansible_host and use_private_ip:
-                ansible_host = vm.get('PrivateIp')
+            # Set ansible_host based on ip_preference
+            public_ip = vm.get('PublicIp')
+            private_ip = vm.get('PrivateIp')
+            if ip_preference == 'public_only':
+                ansible_host = public_ip if public_ip else None
+            elif ip_preference == 'private_only':
+                ansible_host = private_ip if private_ip else None
+            elif ip_preference == 'prefer_public':
+                ansible_host = public_ip if public_ip else private_ip
+            else:
+                raise AnsibleError(f"Invalid parameter value for ip_preference: {ip_preference}")
+
             if ansible_host:
                 inventory.set_variable(hostname, 'ansible_host', ansible_host)
 
