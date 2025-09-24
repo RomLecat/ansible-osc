@@ -1,0 +1,15 @@
+namespace: romlecat
+name: osc_inventory
+version: 0.0.1
+readme: README.md
+authors:
+- Romain Lecat
+description: Dynamic inventory for Outscale FCU VMs.
+license:
+- MIT
+tags: []
+dependencies: {}
+repository: https://github.com/romlecat/ansible-osc-inventory
+documentation: https://github.com/romlecat/ansible-osc-inventory
+homepage: https://github.com/romlecat/ansible-osc-inventory
+issues: https://github.com/romlecat/ansible-osc-inventory/issues
