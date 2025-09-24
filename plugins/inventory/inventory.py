@@ -10,7 +10,7 @@ except ImportError:
     HAS_OSC_SDK = False
 
 DOCUMENTATION = r'''
-name: outscale
+name: inventory
 plugin_type: inventory
 short_description: Outscale VM inventory source
 author: "Romain Lecat"

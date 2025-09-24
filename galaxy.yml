@@ -1,5 +1,5 @@
 namespace: romlecat
-name: osc_inventory
+name: osc
 version: 0.0.1
 readme: README.md
 authors:
@@ -9,7 +9,7 @@ license:
 - MIT
 tags: []
 dependencies: {}
-repository: https://github.com/romlecat/ansible-osc-inventory
-documentation: https://github.com/romlecat/ansible-osc-inventory
-homepage: https://github.com/romlecat/ansible-osc-inventory
-issues: https://github.com/romlecat/ansible-osc-inventory/issues
+repository: https://github.com/romlecat/ansible-osc
+documentation: https://github.com/romlecat/ansible-osc
+homepage: https://github.com/romlecat/ansible-osc
+issues: https://github.com/romlecat/ansible-osc/issues

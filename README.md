@@ -1,4 +1,4 @@
-# Ansible Collection - romlecat.osc_inventory
+# Ansible Collection - romlecat.osc
 
 This collection provides a dynamic inventory plugin for Outscale FCU VMs.
 
