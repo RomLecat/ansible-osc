@@ -14,13 +14,13 @@ Contributions for new features or bugfixes are welcome.
 
 ## Installation
 ```bash
-ansible-galaxy collection install romlecat.osc_inventory
+ansible-galaxy collection install romlecat.osc
 ```
 
 ## Configuration example
 
 ```yaml
-plugin: outscale
+plugin: romlecat.osc.inventory
 region: eu-west-2
 access_key:
 secret_key:
