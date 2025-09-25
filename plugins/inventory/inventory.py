@@ -80,7 +80,7 @@ requirements:
 
 class InventoryModule(BaseInventoryPlugin, Constructable):
 
-    NAME = 'outscale'
+    NAME = 'inventory'
 
     def verify_file(self, path):
         """Return true/false if this is a valid file for this plugin to consume"""
